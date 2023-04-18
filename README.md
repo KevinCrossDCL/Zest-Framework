@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="200" src="https://github.com/KevinCrossDCL/Zest-Framework/blob/main/Logos/Zest-Logo-Transparent.png" alt="Zest logo">
+</p>
+
 # Zest-Framework
 Zest which was named by ChatGPT is a light version of the OryUI framework that only manages image buttons, sprites, text, and basic touch tracking.
 
