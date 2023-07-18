@@ -72,6 +72,12 @@ function ZestGetImageButtonHeld(zestImageButtonID as integer)
 	endif
 endfunction zestImageButtonCollection[zestImageButtonID].held
 
+function ZestGetImageButtonID(zestImageButtonID as integer)
+	local zestID as integer
+	
+	zestID = zestImageButtonCollection[zestImageButtonID].id
+endfunction zestID
+
 function ZestGetImageButtonPressed(zestImageButtonID as integer)
 	zestImageButtonCollection[zestImageButtonID].pressed = 0
 	if (zestImageButtonCollection[zestImageButtonID].enabled = 1)

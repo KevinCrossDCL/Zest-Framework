@@ -62,10 +62,11 @@ description=
 [watchvariables]
 
 [files]
-FILE_NAME_0=0;main.agc;17;0
-FILE_NAME_1=0;Zest.agc;293;1
-FILE_NAME_2=0;ZestImageButton.agc;216;2
-FILE_NAME_3=0;ZestSprite.agc;103;3
-FILE_NAME_4=0;ZestText.agc;58;4
-FILE_NAME_5=0;ZestTouch.agc;58;5
+FILE_NAME_0=0;changelog.txt;7;0
+FILE_NAME_1=0;main.agc;17;1
+FILE_NAME_2=0;Zest.agc;3;2
+FILE_NAME_3=0;ZestImageButton.agc;74;3
+FILE_NAME_4=0;ZestSprite.agc;13;4
+FILE_NAME_5=0;ZestText.agc;44;5
+FILE_NAME_6=0;ZestTouch.agc;35;6
 

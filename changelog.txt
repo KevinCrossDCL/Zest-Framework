@@ -1,0 +1,8 @@
+VERSION 0.2a
+------------------------
+- ZestImageButton
+	- Added function ZestGetImageButtonID()
+		
+- ZestText
+	- Added function ZestGetTextID()
+	- Added function ZestGetTextSize()

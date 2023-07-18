@@ -38,11 +38,23 @@ function ZestDeleteText(zestTextID as integer)
 	DeleteText(zestTextCollection[zestTextID].text)
 endfunction
 
+function ZestGetTextID(zestTextID as integer)
+	local zestID as integer
+	
+	zestID = zestTextCollection[zestTextID].text
+endfunction zestID
+
 function ZestGetTextHeight(zestTextID as integer)
 	local zestTextHeight as float
 	
 	zestTextHeight = GetTextTotalHeight(zestTextCollection[zestTextID].text)
 endfunction zestTextHeight
+
+function ZestGetTextSize(zestTextID as integer)
+	local zestTextSize as float
+	
+	zestTextSize = GetTextSize(zestTextCollection[zestTextID].text)
+endfunction zestTextSize
 
 function ZestGetTextWidth(zestTextID as integer)
 	local zestTextWidth as float
