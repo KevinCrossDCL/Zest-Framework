@@ -19,6 +19,7 @@ endtype
 type typeZestParameters
 	alignment as integer
 	angle as float
+	backgroundColor as float[4]
 	bold as integer
 	color as float[4]
 	depth as integer
@@ -40,7 +41,9 @@ type typeZestParameters
 	offsetTopCenter as integer
 	offsetTopLeft as integer
 	offsetTopRight as integer
+	padding as float[2]
 	position as float[2]
+	printAnchor as string
 	shadow as integer
 	shadowColor as float[4]
 	shadowOffset as float[2]
@@ -56,6 +59,8 @@ type typeZestParameters
 	size as float[2]
 	spriteShader as integer
 	text as string
+	textColor as float[4]
+	textSize as float
 	widget as string
 endtype
 
@@ -258,6 +263,7 @@ function ZestResetParametersType()
 	zestParameters.offsetTopCenter = -999999
 	zestParameters.offsetTopLeft = -999999
 	zestParameters.offsetTopRight = -999999
+	zestParameters.printAnchor = ""
 	zestParameters.shadow = -999999
 	zestParameters.shadowOffsetBottomCenter = -999999
 	zestParameters.shadowOffsetBottomLeft = -999999
@@ -270,16 +276,20 @@ function ZestResetParametersType()
 	zestParameters.shadowOffsetTopRight = -999999
 	zestParameters.spriteShader = -999999
 	zestParameters.text = ""
+	zestParameters.textSize = -999999
 	zestParameters.widget = ""
 	for zestForI = 1 to 4
 		if (zestForI < 3)
 			zestParameters.offset[zestForI] = -999999
+			zestParameters.padding[zestForI] = -999999
 			zestParameters.position[zestForI] = -999999
 			zestParameters.shadowOffset[zestForI] = -999999
 			zestParameters.size[zestForI] = -999999
 		endif
+		zestParameters.backgroundColor[zestForI] = -999999
 		zestParameters.color[zestForI] = -999999
 		zestParameters.shadowColor[zestForI] = -999999
+		zestParameters.textColor[zestForI] = -999999
 	next
 endfunction
 
@@ -310,6 +320,8 @@ function ZestSetParametersType(zestWidgetParameters as string)
 			zestParameters.color[4] = valFloat(zestValue)
 		elseif (zestVariable = "angle")
 			zestParameters.angle = valFloat(zestValue)
+		elseif (zestVariable = "backgroundcolor" or zestVariable = "backgroundcolorid")
+			zestParameters.backgroundColor = ZestConvertColor(zestValue)
 		elseif (zestVariable = "bold")
 			zestParameters.bold = ZestConvertBoolean(zestValue)
 		elseif (zestVariable = "color" or zestVariable = "colorid")
@@ -357,9 +369,16 @@ function ZestSetParametersType(zestWidgetParameters as string)
 				zestParameters.offset[1] = valFloat(GetStringToken(zestValue, ",", 1))
 				zestParameters.offset[2] = valFloat(GetStringToken(zestValue, ",", 2))
 			endif
+		elseif (zestVariable = "padding")
+			zestParameters.padding[1] = valFloat(GetStringToken(zestValue, ",", 1))
+			zestParameters.padding[2] = valFloat(GetStringToken(zestValue, ",", 2))
 		elseif (zestVariable = "position")
 			zestParameters.position[1] = valFloat(GetStringToken(zestValue, ",", 1))
 			zestParameters.position[2] = valFloat(GetStringToken(zestValue, ",", 2))
+		elseif (zestVariable = "printanchor")
+			if (lower(zestValue) = "topleft" or lower(zestValue) = "topright" or lower(zestValue) = "bottomleft" or lower(zestValue) = "bottomright")
+				zestParameters.printAnchor = lower(zestValue)
+			endif
 		elseif (zestVariable = "shadow")
 			zestParameters.shadow = ZestConvertBoolean(zestValue)
 		elseif (zestVariable = "shadowcolor" or zestVariable = "shadowcolorid")
@@ -394,6 +413,10 @@ function ZestSetParametersType(zestWidgetParameters as string)
 			zestParameters.spriteShader = val(zestValue)
 		elseif (zestVariable = "text")
 			zestParameters.text = zestValue
+		elseif (zestVariable = "textcolor" or zestVariable = "textcolorid")
+			zestParameters.textColor = ZestConvertColor(zestValue)
+		elseif (zestVariable = "textsize")
+			zestParameters.textSize = valFloat(zestValue)
 		elseif (zestVariable = "width")
 			zestParameters.size[1] = valFloat(zestValue)
 		endif
@@ -406,6 +429,7 @@ function ZestSetSyncRate(zestSyncRate as float, zestMode as integer)
 endfunction
 
 function ZestSync()
+	ZestUpdatePrints()
 	ZestEndTrackingTouch()
 	UpdateAllTweens(GetFrameTime())
 	Sync()
