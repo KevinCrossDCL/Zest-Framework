@@ -17,6 +17,7 @@ To include it in your project add the following line to the top of your script
 ```
 #insert "..\Zest-Framework\Zest.agc"
 #insert "..\Zest-Framework\ZestImageButton.agc"
+#insert "..\Zest-Framework\ZestPrint.agc"
 #insert "..\Zest-Framework\ZestSprite.agc"
 #insert "..\Zest-Framework\ZestText.agc"
 #insert "..\Zest-Framework\ZestTouch.agc"
