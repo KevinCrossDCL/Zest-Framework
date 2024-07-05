@@ -32,5 +32,8 @@ loop
 ## Documentation
 Documentation can be found here in the Wiki section: https://github.com/KevinCrossDCL/Zest-Framework/wiki
 
+## Contributing
+Please check out the [How to contribute to OryUI guide](https://github.com/KevinCrossDCL/Zest-Framework/blob/master/CONTRIBUTING.md) for guidelines about how to proceed.
+
 ## License
 The Zest Framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
